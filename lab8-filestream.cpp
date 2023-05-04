@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <ctime>
 #include <vector>
@@ -30,40 +30,37 @@ int main()
 
     create_2d_array_and_write_it_to_the_file(rows, cols, file_name);
 
-    vector<vector<int>> A = read_array_from_the_file(file_name);
+    vector<vector<int>> A = read_array_from_the_file("ewewewew.txt");
 
-    if (A.size() == 0) {
-        return 1;
+    if (A.size() > 1) {
 
-    }
+        show_2d_array(A);
 
-    show_2d_array(A);
+        //Варіант 3 В масиві А знайти значення максимального елементу і
+        //замінити ним кожен елемент в другому стовпці
 
-    //Варіант 3 В масиві А знайти значення максимального елементу і
-    //замінити ним кожен елемент в другому стовпці
-    
 
-    int max_var = A[0][0];
+        int max_var = A[0][0];
 
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols; j++)
+        for (int i = 0; i < rows; i++)
         {
-            if (A[i][j] > max_var) {
-                max_var = A[i][j];
+            for (int j = 0; j < cols; j++)
+            {
+                if (A[i][j] > max_var) {
+                    max_var = A[i][j];
+                }
             }
         }
+
+        cout << max_var << endl;
+
+        for (int i = 0; i < rows; i++) {
+            A[i][2] = max_var;
+        }
+
+        write_array_to_the_file(A, rows, cols, result_file_name);
+
     }
-
-    cout << max_var << endl;
-
-    for (int i = 0; i < rows; i++) {
-        A[i][2] = max_var;
-    }
-
-    write_array_to_the_file(A, rows, cols, result_file_name);
-
-
     return 0;
 }
 
@@ -103,7 +100,7 @@ vector<vector<int>> read_array_from_the_file(const string& file) {
         
         cout << "файла нет" << endl;
 
-        return {{}};
+        return {{0}};
     }
 
     int rows, cols;
