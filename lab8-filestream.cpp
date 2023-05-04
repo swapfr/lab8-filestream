@@ -30,7 +30,7 @@ int main()
 
     create_2d_array_and_write_it_to_the_file(rows, cols, file_name);
 
-    vector<vector<int>> A = read_array_from_the_file("ewewewew.txt");
+    vector<vector<int>> A = read_array_from_the_file(file_name);
 
     if (A.size() > 1) {
 
